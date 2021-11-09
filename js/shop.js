@@ -132,6 +132,7 @@ function calculateSubtotals() {
 // Ejercicio - 4
 function calculateTotal() {
     // 1. Calcule el precio total del carrito usando la matriz "cartList"
+    let total = 0;
     for (let x in subtotal) {
         total += subtotal[x].value;
     }
