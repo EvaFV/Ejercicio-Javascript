@@ -1,4 +1,4 @@
-// If you have time, you can move this variable "products" to a json file and load the data in this js. It will look more professional
+
 var products = [
     {
         id: 1,
@@ -55,10 +55,11 @@ var products = [
         type: 'clothes'
     }
 ]
-// Array with products (objects) added directly with push(). Products in this array are repeated. Array con productos (objetos) agregados directamente con push (). Los productos de esta matriz se repiten. 
+//  Array con productos (objetos) agregados directamente con push (). Los productos de esta matriz se repiten. 
 var cartList = [];
 
-// Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.  Versión mejorada de cartList. El carrito es una matriz de productos (objetos), pero cada uno tiene un campo de cantidad para definir su cantidad, por lo que estos productos no se repiten. 
+//   Versión mejorada de cartList. El carrito es una matriz de productos (objetos), pero cada uno tiene un campo de cantidad para definir su cantidad, por lo que estos productos no se repiten. 
+
 var cart = [];
 
 var subtotal = {
@@ -75,6 +76,7 @@ var subtotal = {
         discount: 0
     },
 };
+
 var total = 0;
 
 // Ejercicio - 1
@@ -94,47 +96,75 @@ function buy(id) {
 // Ejercicio - 2
 
 function cleanCart() {
+    cartList = []
 
 }
 
-// Exercise 3
+// Ejercicio - 3
 function calculateSubtotals() {
-    // 1. Create a for loop on the "cartList" array 
-    // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
+    // 1. Cree un bucle for en la matriz "cartList"
+    // 2. Implementar dentro del loop un caso if ... else o switch ... para sumar las cantidades de cada tipo de producto, obteniendo los subtotales: subtotalGrocery, subtotalBeauty y subtotalClothes 
+    
+    for (let i = 0; i < cartList.length; i++){
+        if (cartList.length > 0) {
+            switch (cartList[i].type) {
+                case 'grocery':
+                    subtotal.grocery.value += cartList[i].price
+                    break;
+                case 'beauty':
+                    subtotal.beauty.value += cartList[i].price
+                    break;
+                case 'clothes':
+                    subtotal.clothes.value += cartList[i].price
+                    break;
+                default:
+                    console.log('El carrito está Vacío')
+            }
+            
+        } else  {
+            console.log('El carrito está vacío ')
+        }
+    }
+            console.log('El subtotal de grocery es: ' + subtotal.grocery.value + '\n' + 'El subtotal de beauty es: ' + subtotal.beauty.value + '\n' + 'El subtotal de clothes es: ' + subtotal.clothes.value)
 }
 
-// Exercise 4
+
+// Ejercicio - 4
 function calculateTotal() {
-    // Calculate total price of the cart either using the "cartList" array
+    // 1. Calcule el precio total del carrito usando la matriz "cartList"
+    for (let x in subtotal) {
+        total += subtotal[x].value;
+    }
+    return total
 }
 
-// Exercise 5
+// Ejercicio - 5
 function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    // Usando la matriz "lista de carritos" que contiene todos los artículos en el carrito de compras, 
+    // generar la matriz "carrito" que no contiene elementos repetidos, en su lugar, cada elemento de esta matriz "carrito" muestra la cantidad de producto.
 }
 
-// Exercise 6
+// Ejercicio - 6
 function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
+    // Aplicar promociones a cada artículo de la matriz "carrito"
 }
 
-// Exercise 7
+// Ejercicio - 7
 function addToCart(id) {
-    // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    // Refactorizar el código anterior para simplificarlo
+     // 1. Haga un bucle para los productos de la matriz para obtener el artículo que desea agregar al carrito
+     // 2. Agregue el producto encontrado a la matriz del carrito o actualice su cantidad en caso de que haya sido agregado previamente. 
 }
 
-// Exercise 9
+// Ejercicio - 9
 function removeFromCart(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
+    // 1. Recorra los productos de la matriz para que el artículo se agregue al carrito.
+    // 2. Agregue el producto encontrado a la matriz cartList
 }
-
-// Exercise 10
+// Ejercicio - 10
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
+    // 1. Llenar el carrito de la compra modal manipulando el carrito de la compra dom
+
 }
 
 
