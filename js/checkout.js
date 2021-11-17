@@ -10,4 +10,6 @@ var errorPhone = document.getElementById('errorPhone');
 // Exercise 8
 function validate() {
     // Validate fields entered by the user: name, phone, password, and email
+
+    
 }

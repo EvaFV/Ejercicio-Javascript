@@ -142,26 +142,92 @@ function calculateTotal() {
 
 // Ejercicio - 5
 function generateCart() {
-    // Usando la matriz "lista de carritos" que contiene todos los artículos en el carrito de compras, 
-    // generar la matriz "carrito" que no contiene elementos repetidos, en su lugar, cada elemento de esta matriz "carrito" muestra la cantidad de producto.
+    /**  Usando la matriz "lista de carritos" que contiene todos los artículos en el carrito de compras,
+     generar la matriz "carrito" que no contiene elementos repetidos, en su lugar, cada elemento de esta matriz "carrito" muestra la cantidad de producto.*/
+    
+    for (let i = 0; i < cartList.length; i++) {
+        if (!cart.includes(cartList[i])) {
+            cart.push(cartList[i])
+            cart[cart.length - 1].quantity = 1
+        }
+        else {
+            for (let x = 0; x < cart.length; x++) {
+                if (cart[x].name == cartList[i].name) {
+                    cart[x].quantity += 1
+                    break;
+                }
+            }
+        }
+    }
+    console.log(cart);
+
+    
+    for (let i in cart) {
+        cart[i].subtotal = cart[i].price * cart[i].quantity;
+        cart[i].subtotalWithDiscount = cart[i].subtotal;
+        
+    }
+    console.log(cart);
+    applyPromotionsCart();
+    
+    // console.log('Total con el discount aplicado ' +);
+
+    
 }
 
 // Ejercicio - 6
 function applyPromotionsCart() {
-    // Aplicar promociones a cada artículo de la matriz "carrito"
+    // Aplicar promociones a dos artículos de la matriz "carrito"
+
+    for (let i = 0; i < cart.length; i++) {
+        if ((cart[i].name == 'cooking oil') && (cart[i].quantity > 3)) {
+            cart[i].subtotalWithDiscount = (((cart[i].price) - 0.5) * cart[i].quantity);
+        }
+        else if ((cart[i].name == 'Instant cupcake mixture') && (cart[i].quantity > 10)) {
+            cart[i].subtotalWithDiscount = (cart[i].price * cart[i].quantity) * (2 / 3);
+        }
+    }
 }
 
-// Ejercicio - 7
+ 
+
+/* Ejercicio - 7 */
 function addToCart(id) {
     // Refactorizar el código anterior para simplificarlo
      // 1. Haga un bucle para los productos de la matriz para obtener el artículo que desea agregar al carrito
      // 2. Agregue el producto encontrado a la matriz del carrito o actualice su cantidad en caso de que haya sido agregado previamente. 
+    
+    for (let i = 0; i < products.length; i++){
+        if (id == i + 1) {
+            if (!cart.includes(products[i])) {
+                cart.push(products[i])
+                cart[cart.length - 1].quantity = 1
+            }
+            else {
+                for (let x = 0; x < cart.length; x++){
+                    if (cart[x].name == products[i].name) {
+                        cart[x].quantity += 1
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    console.log(cart);
+    
+    
+    
 }
 
 // Ejercicio - 9
 function removeFromCart(id) {
     // 1. Recorra los productos de la matriz para que el artículo se agregue al carrito.
     // 2. Agregue el producto encontrado a la matriz cartList
+    if (cart.length > 0) {
+            
+        }
+
 }
 // Ejercicio - 10
 function printCart() {
