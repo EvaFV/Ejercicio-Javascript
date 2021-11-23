@@ -31,7 +31,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link text-white btn" id="cart" type="button" data-toggle="modal"
-            data-target="#cartModal" onclick="generateCart(), applyPromotionsCart(),printCart()" href="#beauty"><i class="fas fa-cart-arrow-down"></i>
+            data-target="#cartModal" onclick="printCart()" href="#beauty"><i class="fas fa-cart-arrow-down"></i>
             My Cart</a>
         </li>
       </ul>
@@ -160,7 +160,23 @@
           <div class="modal-body">
             <!-- listing items starts -->
             <div>
-              <ul class="list">
+              <ul class="modal-list">
+                <li class="cart-row">
+                  <div class="item-column item-title col-4">ITEM</div>
+                  <div class="item-column item-title col-2">PRICE</div>
+                  <div class="item-column item-title col-3">QUANTITY</div>
+                  <div class="item-column item-title col-3">SUBTOTAL</div>
+                </li>
+                <ul class="cart-items">
+                </ul>
+                <li class="cart-row">
+                  <div class="item-column total-title col-10">DISCOUNTED</div>
+                  <div id='discount' class="item-column total discount-amount col-2">0€</div>
+                </li>
+                <li class="cart-row">
+                  <div class="item-column total-title col-10">TOTAL</div>
+                  <div id='total' class="item-column total-amount col-2">0€</div>
+                </li>
 
               </ul>
               <div>

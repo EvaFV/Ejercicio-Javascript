@@ -6,3 +6,35 @@ body {
 #errorPassword, #errorName, #errorPhone {
     display: none;
 }
+ input:invalid {
+  box-shadow: 0 0 8px 4px red;
+  background-color: #FDD;
+} /**/
+
+/* .error {
+  width : 100%;
+  padding: 0;
+
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+} 
+
+.error.active {
+  padding: 0.3em;
+} */
+input.error {
+    border: 1px dashed red;
+    font-weight: 300;
+    color: red;
+}
+
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
