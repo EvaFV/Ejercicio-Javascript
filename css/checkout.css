@@ -6,10 +6,10 @@ body {
 #errorPassword, #errorName, #errorPhone {
     display: none;
 }
- input:invalid {
+/* input:invalid {
   box-shadow: 0 0 8px 4px red;
   background-color: #FDD;
-} /**/
+} */
 
 /* .error {
   width : 100%;
@@ -25,7 +25,7 @@ body {
 
 .error.active {
   padding: 0.3em;
-} */
+} 
 input.error {
     border: 1px dashed red;
     font-weight: 300;
@@ -37,4 +37,4 @@ label.error {
     font-size: 1rem;
     display: block;
     margin-top: 5px;
-}
+}*/
