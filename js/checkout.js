@@ -1,70 +1,147 @@
-var password = document.querySelector(".password");
-var phone = document.querySelector('.phone');
-var name = document.querySelector('.name');
-var email = document.querySelector(".mail");
-// Get the error elements
-var errorPassword = document.getElementById("errorPassword");
-var errorName = document.getElementById('errorName');  
-var errorPhone = document.getElementById('errorPhone');
-var errorMail = document.getElementById('errorMail');
 
+
+const fnames = document.forms['form']['fname'];
+const lname = document.forms['form']['lname'];
+const password1 = document.forms['form']['password'];
+const address1 = document.forms['form']['address'];
+const email = document.forms['form']['mail'];
+const phone = document.forms['form']['phone'];
+const minimo = 3;
+const maximo = 8;
+const patternLetra = new RegExp('^[A-Z]+$', 'i');
+const patternNumero = new RegExp('[0-9]+');
+const patternContraseña = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+const patternDireccion = new RegExp('[A-Za-z0-9]{3,40}');
+const patternEmail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 
 // Exercise 8
 function validate() {
-    // Validate fields entered by the user: name, phone, password, and email
-
-    errorName.style.display = 'none';
-    errorPhone.style.display = 'none';
-    errorPassword.style.display = 'none';
-    errorMail.style.display = 'none';
-    name1.classList.remove('is-invalid');
-    last.classList.remove('is-invalid');
-    email.classList.remove('is-invalid');
-    password.classList.remove('is-invalid');
-    address.classList.remove('is-invalid');
-    phone.classList.remove('is-invalid');
-
-    
-    const regEx = /^[A-Za-z]+$/;
-    const numbers = /^[0-9]+$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,8}$/;
-    const mailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-    
-    // Validación nombre
-    if (name1.value == '' || name1.value.length < 3 || !name1.value.match(regEx)) {
-        name1.classList.add('is-invalid');
-        errorName.style.display = 'block';
-    }
-    // Validación last name
-    if (last.value == '' || last.value.length < 3 || !last.value.match(regEx)) {
-        last.classList.add('is-invalid');
-        errorName.style.display = 'block';
-    }
-    // Validación Email
-    if (email.value == '' || email.value.length < 3 || !email.value.match(mailRegex)) {
-        email.classList.add('is-invalid');
-        errorMail.style.display = 'block';
-    }
-    // Validación Password 
-    if (password.value == '' || password.value.length < 3 || !password.value.match(passwordRegex)) {
-        password.classList.add('is-invalid');
-        errorPassword.style.display = 'block';
-    }
-    // Validación Address   
-    if (address.value == '' || address.value.length < 3) {
-        address.classList.add('is-invalid');
-    }
-    // Validación Phone
-    if (phone.value == '' || phone.value.length < 3 || !phone.value.match(numbers)) {
-        phone.classList.add('is-invalid');
-        errorPhone.style.display = 'block';
+    let isValid = true;
+    if (!email.value) {
+        isValid = false;
+        email.style.borderColor = 'red';
+        document.getElementById("feedback-email").style.display = "";
     } else {
-        return true;
+        if (email.value.length < minimo) {
+            isValid = false;
+            email.style.borderColor = 'red';
+        } else {
+            if (!patternEmail.test(email.value)) {
+                isValid = false;
+                email.style.borderColor = 'red';
+            } else {
+               email.style.borderColor = 'palegreen';
+                document.getElementById("feedback-email").style.display = "none";
+            }
+        }
     }
-    alert('Todos los campos son requeridos y han de tener un mínimo de 3 caracteres');
+
+
+
+    if (!fnames.value) {
+        isValid = false;
+        fnames.style.borderColor = 'red';
+        document.getElementById("feedback-fname").style.display = "";
+    } else {
+        if (fnames.value.length < minimo) {
+            isValid = false;
+            fnames.style.borderColor = 'red';
+        } else {
+            if (!patternLetra.test(fnames.value)) {
+                isValid = false;
+                fnames.style.borderColor = 'red';
+            } else {
+                fnames.style.borderColor = 'palegreen';
+                document.getElementById("feedback-fname").style.display = "none";
+            }
+        }
+    }
+
+    if (!lname.value) {
+        isValid = false;
+        lname.style.borderColor = 'red';
+        document.getElementById("feedback-lname").style.display = "";
+    } else {
+        if (lname.value.length < minimo) {
+            isValid = false;
+            lname.style.borderColor = 'red';
+        } else {
+            if (!patternLetra.test(lname.value)) {
+                isValid = false;
+                lname.style.borderColor = 'red';
+            } else {
+                lname.style.borderColor = 'palegreen';
+                document.getElementById("feedback-lname").style.display = "none";
+            }
+        }
+    }
+
+    if (!phone.value) {
+        isValid = false;
+        phone.style.borderColor = 'red';
+        document.getElementById("feedback-phone").style.display = "";
+    } else {
+        if (phone.value.length < minimo) {
+            isValid = false;
+            phone.style.borderColor = 'red';
+        } else {
+            if (!patternNumero.test(phone.value)) {
+                isValid = false;
+                phone.style.borderColor = 'red';
+            } else {
+                phone.style.borderColor = 'palegreen';
+                document.getElementById("feedback-phone").style.display = "none";
+            }
+        }
+    }
+
+    if (!address1.value) {
+        isValid = false;
+        address1.style.borderColor = 'red';
+        document.getElementById("feedback-address").style.display = "";
+    } else {
+        if (address1.value.length < minimo) {
+            isValid = false;
+            address1.style.borderColor = 'red';
+        } else {
+            if (!patternDireccion.test(address1.value)) {
+                isValid = false;
+                address1.style.borderColor = 'red';
+            } else {
+                address1.style.borderColor = 'palegreen';
+                document.getElementById("feedback-address").style.display = "none";
+            }
+        }
+    }
+
+    if (!password1.value) {
+        isValid = false;
+        password1.style.borderColor = 'red';
+        document.getElementById("feedback-password").style.display = "";
+    } else {
+        if ((password.value.length < minimo) && (password1.value.length > maximo)) {
+            isValid = false;
+            password1.style.borderColor = 'red';
+        } else {
+            if (!patternContraseña.test(password1.value)) {
+                isValid = false;
+                password1.style.borderColor = 'red';
+            } else {
+                password1.style.borderColor = 'palegreen';
+                document.getElementById("feedback-password").style.display = "none";
+            }
+        }
+    }
+
+    return isValid;
 }
 
-
-
+function verificar() {
+    const valido = validate();
+    if (!valido) {
+        alert('Hay un campo erroneo, verifiquelo');
+    } else {
+        alert('Todos los campos son correctos, enviando...');
+    }
+}
 
