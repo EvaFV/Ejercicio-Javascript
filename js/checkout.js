@@ -119,7 +119,7 @@ function validate() {
         password1.style.borderColor = 'red';
         document.getElementById("feedback-password").style.display = "";
     } else {
-        if ((password.value.length < minimo) && (password1.value.length > maximo)) {
+        if ((password1.value.length < minimo) && (password1.value.length > maximo)) {
             isValid = false;
             password1.style.borderColor = 'red';
         } else {
