@@ -139,9 +139,9 @@ function validate() {
 function verificar() {
     const valido = validate();
     if (!valido) {
-        alert('Hay un campo erroneo, verifiquelo');
+        console.log('Hay algun campo erroneo');
     } else {
-        alert('Todos los campos son correctos, enviando...');
+        console.log('Todos los campos son correctos');
     }
 }
 
